@@ -18,7 +18,8 @@ from django.urls import path
 
 
 from api.views import ProductsView,ProductDetailsView,ReviewsView,\
-    ReviewDetailsView,ProductsViewsetView,ProductModelViewsetView,ReviewModelViewsetView
+    ReviewDetailsView,ProductsViewsetView,ProductModelViewsetView,\
+    ReviewModelViewsetView,UsersView
 
 
 from rest_framework.routers import DefaultRouter
@@ -26,7 +27,7 @@ router=DefaultRouter()
 router.register("api/v1/products",ProductsViewsetView,basename="products")
 router.register("api/v2/products",ProductModelViewsetView,basename="vehicles")
 router.register("api/v1/reviews",ReviewModelViewsetView,basename="reviews")
-
+router.register("register",UsersView,basename="user")
 
 
 
