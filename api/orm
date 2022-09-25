@@ -1,0 +1,91 @@
+from django.db import models
+
+
+class Vehicles(models.Model):
+    name=models.CharField(max_length=200)
+    model=models.CharField(max_length=200)
+    color=models.CharField(max_length=200)
+    price=models.PositiveIntegerField()
+    transmission=models.CharField(max_length=200)
+
+
+
+orm query for creating an object
+================================
+Modelname.objects.create(field1=value,field2=value........)
+
+Vehicles.objects.create(name="Toyota",model="corolla",color="black",price=1700000,transmission="manuel")
+
+
+
+
+
+list all items
+========================
+Modelname.objects.all()
+
+
+qs=Vehicles.objects.all()
+qs
+
+
+
+fetching a specific resource
+============================
+Modelname.objects.get()
+
+data=Vehicles.objects.get(id=2)
+data
+
+
+data.name
+'Hyundai'
+
+
+filter data
+=============================
+Modelname.objects.filter(price__lt=3000000)
+
+pr=Vehicles.objects.filter(price__lt=3000000)
+pr
+
+
+
+exclude
+===============================
+data=Vehicles.objects.all().exclude(price=400000)
+data
+
+
+Range(filed lookups)
+================================
+data=Vehicles.objects.filter(price__gte=400000,price__lte=2500000)
+data
+
+
+
+to get vehicle name where model is Creta
+=============================================
+data=Vehicles.objects.filter(model="Creta")
+data
+
+
+
+
+sort
+================================================
+Vehicles.objects.order_by('-price')    ---in desc order
+
+
+
+
+update
+===============================================
+Vehicles.objects.filter(id=2).update(price=3500000)
+
+
+
+
+delete
+================================================
+Vehicles.objects.filter(id=7).delete()
